@@ -1,0 +1,21 @@
+version: '3'
+services:
+  frontend:
+    image: your-frontend-image
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app/frontend  # Map frontend directory
+    environment:
+      - NODE_ENV=development  # Set any necessary environment variables
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app/backend    # Map backend directory
+    environment:
+      - ANY_BACKEND_ENV_VARIABLE=your-value
